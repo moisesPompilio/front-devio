@@ -1,0 +1,47 @@
+@import '../../App.scss';
+
+.total-card {
+  width: 30vw;
+  min-height: 420px;
+  background-color: $clr-white;
+  border-radius: 20px;
+  box-shadow: rgba(99, 99, 99, 0.2) 2px 4px 8px 2px;
+  padding: 10px;
+  margin: 24px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &-container{
+    width: 100%;
+  }
+  &-title {
+      margin-bottom: 10px;
+      border-bottom: 1px solid $clr-light-blue;
+    }
+    &-resume {
+        margin-top: 20px;
+        margin-bottom: 40px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        &-item{
+            margin-bottom: 10px;
+            justify-content: space-between;
+        }
+    }
+    &-total {
+        width: 100%;
+        margin-top: 10px;
+        border-top: 1px solid $clr-light-blue;
+    }
+    &-btn {
+        width: 100%;
+        button {
+            display: block;
+            width: 100%;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+}
