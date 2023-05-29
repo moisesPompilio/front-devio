@@ -1,12 +1,12 @@
 import { extras } from '.';
-import { Extra } from '../../model/Extra';
+import { CreateExtra } from '../../model/CreaExtra';
+import { Extra } from '../../model/entity/Extra';
 
-export async function CreateExtra(extra: Extra): Promise<Extra> {
-  const newExtra: Extra = { ...extra };
+export async function CreateExtra(extra: CreateExtra): Promise<Extra> {
   const lastExtra = extras[extras.length - 1];
-  const lastExtraId = lastExtra?.id ?? '0';
+  const lastExtraId = lastExtra.id;
   const id = (parseInt(lastExtraId, 10) + 1).toString();
-  newExtra.id = id;
+  const newExtra: Extra = { ...extra, id };
   extras.push(newExtra);
   return newExtra;
 }

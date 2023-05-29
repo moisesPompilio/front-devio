@@ -1,5 +1,5 @@
 import { orders } from '.';
-import { Order } from '../../model/Order';
+import { Order } from '../../model/entity/Order';
 
 export async function UpdateOrder(
   id: string,

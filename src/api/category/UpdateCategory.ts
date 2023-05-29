@@ -1,5 +1,5 @@
 import { categories } from '.';
-import { Category } from '../../model/Category';
+import { Category } from '../../model/entity/Category';
 
 export async function UpdateCategory(
   id: string,

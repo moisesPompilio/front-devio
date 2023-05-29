@@ -1,12 +1,12 @@
 import { orders } from '.';
-import { Order } from '../../model/Order';
+import { CreateOrder } from '../../model/CreateOrder';
+import { Order } from '../../model/entity/Order';
 
-export async function CreateOrder(order: Order): Promise<Order> {
-  const newOrder: Order = { ...order };
+export async function CreateOrder(order: CreateOrder): Promise<Order> {
   const lastOrder = orders[orders.length - 1];
-  const lastOrderId = lastOrder?.id ?? '0';
+  const lastOrderId = lastOrder.id;
   const id = (parseInt(lastOrderId, 10) + 1).toString();
-  newOrder.id = id;
+  const newOrder: Order = { ...order, id };
   orders.push(newOrder);
   return newOrder;
 }

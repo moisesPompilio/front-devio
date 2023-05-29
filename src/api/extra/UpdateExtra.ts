@@ -1,5 +1,5 @@
 import { extras } from '.';
-import { Extra } from '../../model/Extra';
+import { Extra } from '../../model/entity/Extra';
 
 export async function UpdateExtra(
   id: string,

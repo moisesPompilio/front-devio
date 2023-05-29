@@ -1,4 +1,4 @@
-import { Product } from '../../model/Product';
+import { Product } from '../../model/entity/Product';
 
 export const products: Product[] = [];
 export const pordutosMemomerie: Product[] = [
@@ -61,18 +61,17 @@ export const pordutosMemomerie: Product[] = [
     id: '6',
     category_id: '1',
     image:
-      'http://www.postotropical.net.br/wp-content/uploads/2021/02/refrigerantes-lata-350ml-min-768x768.jpg',
-    description: 'Bebida Top',
+      'https://www.auau.com.br/image/cache/data/up_system/product-13839/Combo-hamburguer-cheddar-1000x1000.jpg',
+    description: '2x hanburgue de 200g',
     price: 5.9,
-    name: 'guarana',
+    name: 'Smash da casa',
     extra: ['4'],
     code: 'b10',
   },
   {
     id: '7',
     category_id: '1',
-    image:
-      'http://www.postotropical.net.br/wp-content/uploads/2021/02/refrigerantes-lata-350ml-min-768x768.jpg',
+    image: 'https://www.imagensempng.com.br/wp-content/uploads/2021/03/28.png',
     description: 'Bebida Top',
     price: 5.9,
     name: 'guarana',
@@ -98,7 +97,6 @@ export const pordutosMemomerie: Product[] = [
     description: 'Bebida Top',
     price: 5.9,
     name: 'guarana',
-    extra: ['4'],
     code: 'b16',
   },
 ];

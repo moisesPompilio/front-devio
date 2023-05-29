@@ -1,4 +1,4 @@
-import { Category } from '../../model/Category';
+import { Category } from '../../model/entity/Category';
 
 export const categories: Category[] = [
   {

@@ -1,5 +1,5 @@
 import { pordutosMemomerie, products } from '.';
-import { Product } from '../../model/Product';
+import { Product } from '../../model/entity/Product';
 
 export async function GetProduct(
   searc?: string,

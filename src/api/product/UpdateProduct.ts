@@ -1,5 +1,5 @@
 import { pordutosMemomerie } from '.';
-import { Product } from '../../model/Product';
+import { Product } from '../../model/entity/Product';
 
 export async function UpdateProduct(
   id: string,

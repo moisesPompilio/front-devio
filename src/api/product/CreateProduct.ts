@@ -1,12 +1,12 @@
 import { pordutosMemomerie } from '.';
-import { Product } from '../../model/Product';
+import { CreateProduct } from '../../model/CreateProduct';
+import { Product } from '../../model/entity/Product';
 
-export async function CreateProduct(order: Product): Promise<Product> {
-  const newOrder: Product = { ...order };
-  const lastOrder = pordutosMemomerie[pordutosMemomerie.length - 1];
-  const lastOrderId = lastOrder?.id ?? '0';
-  const id = (parseInt(lastOrderId, 10) + 1).toString();
-  newOrder.id = id;
-  pordutosMemomerie.push(newOrder);
-  return newOrder;
+export async function CreateProduct(product: CreateProduct): Promise<Product> {
+  const lastProduct = pordutosMemomerie[pordutosMemomerie.length - 1];
+  const lastProductId = lastProduct.id;
+  const id = (parseInt(lastProductId, 10) + 1).toString();
+  const newProduct: Product = { ...product, id };
+  pordutosMemomerie.push(newProduct);
+  return newProduct;
 }

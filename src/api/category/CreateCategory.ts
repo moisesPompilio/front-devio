@@ -1,12 +1,14 @@
 import { categories } from '.';
-import { Category } from '../../model/Category';
+import { CreateCategory } from '../../model/CreateCategory';
+import { Category } from '../../model/entity/Category';
 
-export async function CreateCategory(category: Category): Promise<Category> {
-  const newCategory: Category = { ...category };
+export async function CreateCategory(
+  category: CreateCategory,
+): Promise<Category> {
   const lastCategory = categories[categories.length - 1];
-  const lastCategoryId = lastCategory?.id ?? '0';
+  const lastCategoryId = lastCategory.id;
   const id = (parseInt(lastCategoryId, 10) + 1).toString();
-  newCategory.id = id;
+  const newCategory: Category = { ...category, id };
   categories.push(newCategory);
   return newCategory;
 }
