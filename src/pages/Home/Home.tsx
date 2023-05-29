@@ -1,38 +1,39 @@
-import { useState } from 'react';
-import reactLogo from '../../assets/react.svg';
-import viteLogo from '../../../public/vite.svg';
 import './Home.scss';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { CategorySlider } from '../../components/CategorySlider/CategorySlider';
+import { ProductList } from '../../components/ProductList/ProductList';
+import { getCategoryService } from '../../services/category/getCategoryService';
+import { getProductService } from '../../services/product/getProductService';
+import { getExtraService } from '../../services/extra/getExtraService';
+import { getOrderService } from '../../services/orde/getOrderService';
 
-function Home() {
-  const [count, setCount] = useState(0);
+export function Home() {
+  const categories = useAppSelector(state => state.categories.categories);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    getCategoryService(dispatch);
+    getProductService(dispatch);
+    getExtraService(dispatch);
+    getOrderService(dispatch);
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container">
+      <div className="categories">
+        <h2 className="fw-7 ls-4">Categorias</h2>
+        <p>Navegue por categoria</p>
+        <CategorySlider categories={categories} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button
-          type="button"
-          onClick={() => setCount(countNovo => countNovo + 1)}
-        >
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/Home.tsx</code> and save to test HMR
+      <div className="products">
+        <h2 className="fw-7 ls-4">Produtos</h2>
+        <p className="products-text">
+          Selecione um produto para adcionar no seu pedido
         </p>
+        <ProductList />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   );
 }
-
-export default Home;
