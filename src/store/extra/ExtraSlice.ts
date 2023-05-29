@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { STATUS, TypeSTATUS } from '../../model/Status';
-import { Extra } from '../../model/Extra';
+import { STATUS, TypeSTATUS } from '../../model/entity/Status';
+import { Extra } from '../../model/entity/Extra';
 
 type stateCategory = {
   extras: Extra[];
@@ -19,10 +19,10 @@ export const extraSlice = createSlice({
     setExtra: (state, action: PayloadAction<Extra[]>) => {
       return {
         ...state,
-        categories: action.payload,
+        extras: action.payload,
       };
     },
-    setStatus: (state, action: PayloadAction<TypeSTATUS>) => {
+    setStatusExtra: (state, action: PayloadAction<TypeSTATUS>) => {
       return {
         ...state,
         status: action.payload,
@@ -31,5 +31,5 @@ export const extraSlice = createSlice({
   },
 });
 
-export const { setExtra, setStatus } = extraSlice.actions;
+export const { setExtra, setStatusExtra } = extraSlice.actions;
 export const extraReducer = extraSlice.reducer;

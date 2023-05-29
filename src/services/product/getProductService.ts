@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
-import { STATUS } from '../../model/Status';
-import { setProduct, setStatus } from '../../store/product/ProductSlice';
+import { STATUS } from '../../model/entity/Status';
+import { setProduct, setStatusProduct } from '../../store/product/ProductSlice';
 import { GetProduct } from '../../api/product/GetProduct';
 
 function delay(ms: number): Promise<void> {
@@ -10,12 +10,12 @@ function delay(ms: number): Promise<void> {
 }
 
 export const getProductService = async (dispatch: Dispatch): Promise<void> => {
-  dispatch(setStatus(STATUS.LOADING));
+  dispatch(setStatusProduct(STATUS.LOADING));
   try {
     await delay(1000);
     dispatch(setProduct(await GetProduct()));
   } catch (error) {
     console.error(error);
   }
-  dispatch(setStatus(STATUS.IDLE));
+  dispatch(setStatusProduct(STATUS.IDLE));
 };

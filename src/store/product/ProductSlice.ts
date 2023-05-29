@@ -1,15 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { STATUS, TypeSTATUS } from '../../model/Status';
-import { Product } from '../../model/Product';
+import { STATUS, TypeSTATUS } from '../../model/entity/Status';
+import { Product } from '../../model/entity/Product';
 
 type stateProduct = {
   products: Product[];
   status: TypeSTATUS;
+  ProducSingleVisible: boolean;
 };
 
 const initialState: stateProduct = {
   products: [],
   status: STATUS.IDLE,
+  ProducSingleVisible: false,
 };
 
 export const productSlice = createSlice({
@@ -22,14 +24,21 @@ export const productSlice = createSlice({
         products: action.payload,
       };
     },
-    setStatus: (state, action: PayloadAction<TypeSTATUS>) => {
+    setStatusProduct: (state, action: PayloadAction<TypeSTATUS>) => {
       return {
         ...state,
         status: action.payload,
       };
     },
+    setProducSingleVisible: (state, action: PayloadAction<boolean>) => {
+      return {
+        ...state,
+        ProducSingleVisible: action.payload,
+      };
+    },
   },
 });
 
-export const { setProduct, setStatus } = productSlice.actions;
+export const { setProduct, setStatusProduct, setProducSingleVisible } =
+  productSlice.actions;
 export const productReducer = productSlice.reducer;

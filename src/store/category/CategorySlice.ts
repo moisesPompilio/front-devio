@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Category } from '../../model/Category';
-import { STATUS, TypeSTATUS } from '../../model/Status';
+import { Category } from '../../model/entity/Category';
+import { STATUS, TypeSTATUS } from '../../model/entity/Status';
 
 type stateCategory = {
   categories: Category[];
@@ -22,7 +22,7 @@ export const categorySlice = createSlice({
         categories: action.payload,
       };
     },
-    setStatus: (state, action: PayloadAction<TypeSTATUS>) => {
+    setStatusCategory: (state, action: PayloadAction<TypeSTATUS>) => {
       return {
         ...state,
         status: action.payload,
@@ -31,5 +31,5 @@ export const categorySlice = createSlice({
   },
 });
 
-export const { setCategory, setStatus } = categorySlice.actions;
+export const { setCategory, setStatusCategory } = categorySlice.actions;
 export const categoryReducer = categorySlice.reducer;
