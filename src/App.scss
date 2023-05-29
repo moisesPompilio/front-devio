@@ -89,7 +89,7 @@ select {
 /* flexbox and grid */
 .flex {
   display: flex;
-  align-items: center;
+  // align-items: center;
 
   &-row{
     flex-direction: row;
