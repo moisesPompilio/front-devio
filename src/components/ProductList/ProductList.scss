@@ -1,0 +1,40 @@
+
+@import '../../App.scss';
+.product-items {
+  row-gap: 0px;
+  margin-top: 0px;
+  padding: 0 10px;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: 20px;
+  .product-item {
+    cursor: pointer;
+    box-shadow: rgba(99, 99, 99, 0.05) 6px 6px 8px 6px;
+    padding: 18px;
+    border-radius: 20px;
+    transition: $transition;
+    
+    &:hover {
+        box-shadow: rgba(99, 99, 99, 0.2) 8px 8px 10px 8px;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 20px;
+}
+
+@media screen and (max-width: 992px) {
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 20px;
+}
+@media screen and (max-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+}
+
+@media screen and (max-width: 576px) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 0px;
+  }
+
+}
