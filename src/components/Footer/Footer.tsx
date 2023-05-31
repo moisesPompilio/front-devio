@@ -10,7 +10,7 @@ export function Footer() {
             <ul>
               <li>
                 <a
-                  href="https://github.com/moisesPompilio/mypharma-front"
+                  href="https://github.com/moisesPompilio/front-devio"
                   rel="noreferrer noopener"
                   target="_blank"
                   className="fs-15"
@@ -20,7 +20,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/moisesPompilio/API_MyPharma"
+                  href="https://github.com/moisesPompilio/api-devio"
                   rel="noreferrer noopener"
                   target="_blank"
                   className="fs-15"
@@ -30,7 +30,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://teste-api-mypharma.onrender.com/swagger/docs"
+                  href="https://api-devio.onrender.com/docs"
                   rel="noreferrer noopener"
                   target="_blank"
                   className="fs-15"
@@ -56,7 +56,7 @@ export function Footer() {
             <ul>
               <li>
                 <a
-                  href="https://www.mypharma.com.br/"
+                  href="/"
                   target="_blank"
                   rel="noreferrer noopener"
                   className="fs-15"
@@ -66,7 +66,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://www.mypharma.com.br/blog/"
+                  href="/"
                   target="_blank"
                   rel="noreferrer noopener"
                   className="fs-15"
@@ -76,7 +76,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://www.mypharma.com.br/blog/conheca-as-solucoes-da-mypharma/"
+                  href="/"
                   rel="noreferrer noopener"
                   target="_blank"
                   className="fs-15"
