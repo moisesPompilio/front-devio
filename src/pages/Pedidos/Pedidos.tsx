@@ -6,10 +6,10 @@ import { useAppSelector } from '../../hooks/useAppSelector';
 
 export function Pedidos() {
   const dispatch = useDispatch();
-  const orderPreparando = useAppSelector(
-    state => state.orders.ordersPreparando,
-  );
-  const ordenPronto = useAppSelector(state => state.orders.ordersPronto);
+  // const orderPreparando = useAppSelector(
+  //   state => state.orders.ordersPreparando,
+  // );
+  // const ordenPronto = useAppSelector(state => state.orders.ordersPronto);
   useEffect(() => {
     getOrderService(dispatch);
   }, []);
