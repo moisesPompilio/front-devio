@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import './Pedidos.scss';
 import { useEffect } from 'react';
 import { getOrderService } from '../../services/orde/getOrderService';
-import { useAppSelector } from '../../hooks/useAppSelector';
+// import { useAppSelector } from '../../hooks/useAppSelector';
 
 export function Pedidos() {
   const dispatch = useDispatch();
