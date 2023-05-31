@@ -6,6 +6,6 @@ type PedidoProductCardProps = {
 };
 
 export function PedidoProductCard({ order }: PedidoProductCardProps) {
-  const { id, produtcs, total } = order;
+  // const { id, produtcs, total } = order;
   return <div />;
 }
