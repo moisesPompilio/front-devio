@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { ProductOrder } from '../../model/entity/ProductOrder';
 import { priceFormatter } from '../../util/priceFormatter';
 import './ProductCart.scss';
@@ -7,8 +8,14 @@ type ProductCartProps = {
 };
 
 export function ProductCart({ product }: ProductCartProps) {
-  const { image, name, quantity, price } = product;
-  const extras = product?.extras ?? [];
+  const { image, name, quantity, price, extras } = product;
+  const [quantityProduct, setQuantityProduct] = useState(quantity);
+  const [subTotal, setSubTotal] = useState(0);
+  const productOrder: ProductOrder = {
+    ...product,
+    quantity: quantityProduct,
+  };
+
   const caculateSubTotalExtras = (): number => {
     let value = 0;
     if (extras.length === 0) {
@@ -19,14 +26,24 @@ export function ProductCart({ product }: ProductCartProps) {
     });
     return value;
   };
-  const subTotal = (caculateSubTotalExtras() + price) * quantity;
+  const clickChangeQuantityOfProduct = (numero: number) => {
+    const newQuantityProduct = quantityProduct + numero;
+    if (newQuantityProduct > 0) {
+      setQuantityProduct(newQuantityProduct);
+    }
+  };
+
+  useEffect(() => {
+    setSubTotal((caculateSubTotalExtras() + price) * quantityProduct);
+  }, [quantityProduct]);
+
   return (
     <div className="product-cart bg-white flex-between">
       <div className="product-cart-resume fs-13">
         <div className="product-cart-img flex flex-column">
           <img src={image} alt={name} />
           <button type="button" className="btn-danger">
-            <i className="fas fa-clipboard" />
+            <i className="fas fa-trash" />
           </button>
         </div>
         <div className="product-cart-itens flex flex-column">
@@ -43,19 +60,17 @@ export function ProductCart({ product }: ProductCartProps) {
             <button
               type="button"
               className="btn-primary"
-              // onClick={() => clickChangeQuantityOfProduct(-1)}
+              onClick={() => clickChangeQuantityOfProduct(-1)}
             >
-              {' '}
-              -{' '}
+              -
             </button>
-            <p>{quantity}</p>
+            <p>{quantityProduct}</p>
             <button
               type="button"
               className="btn-primary"
-              // onClick={() => clickChangeQuantityOfProduct(1)}
+              onClick={() => clickChangeQuantityOfProduct(1)}
             >
-              {' '}
-              +{' '}
+              +
             </button>
           </div>
         </div>

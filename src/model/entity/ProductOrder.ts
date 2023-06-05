@@ -5,7 +5,7 @@ export type ProductOrder = {
   name: string;
   description: string;
   price: number;
-  extras?: Extra[];
+  extras: Extra[];
   image: string;
   observation?: string;
   quantity: number;

@@ -1,6 +1,7 @@
 import './ProductSingle.scss';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { Product } from '../../model/entity/Product';
 import { getExtraFromArrayId } from '../../util/getExtraFromArrayId';
@@ -8,6 +9,8 @@ import { setProducSingleVisible } from '../../store/product/ProductSlice';
 import { ProductCardSingle } from '../ProductCardSingle/ProductCardSingle';
 import { ExtraCardSelect } from '../ExtraCardSelect/ExtraCardSelect';
 import { priceFormatter } from '../../util/priceFormatter';
+import { ProductOrder } from '../../model/entity/ProductOrder';
+import { isertProductInCartService } from '../../services/orde/isertProductInCartService';
 
 type ProductSingleProps = {
   product: Product;
@@ -21,7 +24,19 @@ export function ProductSingle({ product }: ProductSingleProps) {
   const [observation, setObservation] = useState('');
   const [isExceededLimitObservation, setIsExceededLimitObservation] =
     useState(false);
-  const handleChangeObservation = (event: any) => {
+  const [extrasSelect, setExtrasSelect] = useState([]);
+  const handleContinuarPedindo = () => {
+    const productOrder: ProductOrder = {
+      ...product,
+      quantity: quantityOfProduct,
+      observation,
+      extras: [],
+    };
+    isertProductInCartService(dispatch, productOrder);
+    dispatch(setProducSingleVisible(false));
+  };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleChangeObservation = (event: { target: { value: any } }) => {
     const { value } = event.target;
     setObservation(value);
   };
@@ -128,18 +143,20 @@ export function ProductSingle({ product }: ProductSingleProps) {
             type="button"
             className="btn-secondary"
             id="cintinuar"
-            onClick={() => setQuantityOfProduct(quantityOfProduct + 1)}
+            onClick={() => handleContinuarPedindo()}
           >
             Continuar pedido
           </button>
-          <button
-            id="carrinho"
-            type="button"
-            className="btn-primary"
-            onClick={() => setQuantityOfProduct(quantityOfProduct - 1)}
-          >
-            Adicionar ao carrinho
-          </button>
+          <Link to="cart">
+            <button
+              id="carrinho"
+              type="button"
+              className="btn-primary"
+              onClick={() => handleContinuarPedindo()}
+            >
+              Adicionar ao carrinho
+            </button>
+          </Link>
         </div>
       </div>
     </div>

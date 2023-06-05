@@ -1,20 +1,13 @@
-import { pordutosMemomerie, products } from '.';
+import { api } from '..';
 import { Product } from '../../model/entity/Product';
 
 export async function GetProduct(
   searc?: string,
-  //   page?: number,
-  //   ordeBy?: string,
+  page?: number,
+  ordeBy?: string,
+  categoryId?: string,
 ): Promise<Product[]> {
-  products.length = 0;
-  if (searc) {
-    products.push(
-      ...pordutosMemomerie.filter(
-        product => product.name.includes(searc) || product.code.includes(searc),
-      ),
-    );
-  } else {
-    products.push(...pordutosMemomerie);
-  }
+  const response = await api.get('product');
+  const { products } = response.data;
   return products;
 }

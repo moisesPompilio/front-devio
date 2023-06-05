@@ -9,16 +9,16 @@ import {
   setordersPronto,
 } from '../../store/order/OrderSlice';
 import { GetOrder } from '../../api/order/GetOrder';
+import { readCartFromLocalStorage } from '../../util/localStorageCart';
 
 export const getOrderService = async (dispatch: Dispatch): Promise<void> => {
   dispatch(setStatusOrder(STATUS.LOADING));
   try {
     const orders = await GetOrder();
     dispatch(setOrder(orders));
-    const orderPedido = orders.filter(order => order.status === 'pedido');
-    if (orderPedido.length > 0) {
-      dispatch(setOrdersPedido(orderPedido[0]));
-    }
+    const orderPedido = readCartFromLocalStorage();
+    dispatch(setOrdersPedido(orderPedido));
+
     const orderPreparando = orders.filter(
       order => order.status === 'preparando',
     );
