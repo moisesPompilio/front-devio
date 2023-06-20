@@ -1,20 +1,19 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { ProductOrder } from '../../model/entity/ProductOrder';
 import { priceFormatter } from '../../util/priceFormatter';
 import './ProductCart.scss';
+import { updateProductInCartService } from '../../services/orde/updateProductInCartService';
 
 type ProductCartProps = {
   product: ProductOrder;
 };
 
 export function ProductCart({ product }: ProductCartProps) {
+  const dispatch = useDispatch();
   const { image, name, quantity, price, extras } = product;
   const [quantityProduct, setQuantityProduct] = useState(quantity);
   const [subTotal, setSubTotal] = useState(0);
-  const productOrder: ProductOrder = {
-    ...product,
-    quantity: quantityProduct,
-  };
 
   const caculateSubTotalExtras = (): number => {
     let value = 0;
@@ -30,6 +29,11 @@ export function ProductCart({ product }: ProductCartProps) {
     const newQuantityProduct = quantityProduct + numero;
     if (newQuantityProduct > 0) {
       setQuantityProduct(newQuantityProduct);
+      const productOrder: ProductOrder = {
+        ...product,
+        quantity: newQuantityProduct,
+      };
+      updateProductInCartService(dispatch, productOrder);
     }
   };
 

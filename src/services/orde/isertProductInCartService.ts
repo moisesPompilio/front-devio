@@ -14,7 +14,7 @@ export const isertProductInCartService = async (
   dispatch(setStatusOrder(STATUS.LOADING));
   try {
     const orderPedido = readCartFromLocalStorage();
-    orderPedido.produtcs.push(productOrder);
+    orderPedido.products.push(productOrder);
     writeCartToLocalStorage(orderPedido);
     dispatch(setOrdersPedido(orderPedido));
   } catch (error) {
