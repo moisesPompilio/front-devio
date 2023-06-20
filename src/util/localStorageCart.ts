@@ -4,7 +4,7 @@ const CART_KEY = 'cart';
 export const readCartFromLocalStorage = (): Order => {
   const order: Order = {
     id: '1',
-    produtcs: [],
+    products: [],
     status: 'pedido',
     total: 0,
     name_cliente: 'a',

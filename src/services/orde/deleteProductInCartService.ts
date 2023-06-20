@@ -12,10 +12,10 @@ export const deleteProductInCartService = async (
 ): Promise<void> => {
   try {
     const order = readCartFromLocalStorage();
-    const newProduct = order.produtcs.filter(
+    const newProduct = order.products.filter(
       products => products.id !== idProduct,
     );
-    const newOrder: Order = { ...order, produtcs: newProduct };
+    const newOrder: Order = { ...order, products: newProduct };
     writeCartToLocalStorage(newOrder);
     dispatch(setOrdersPedido(newOrder));
   } catch (error) {

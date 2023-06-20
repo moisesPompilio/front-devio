@@ -13,7 +13,7 @@ type stateOrder = {
 
 const initialState: stateOrder = {
   orders: [],
-  ordersPedido: { id: 'a', produtcs: [], status: 'pedido', total: 0 },
+  ordersPedido: { id: 'a', products: [], status: 'pedido', total: 0 },
   ordersPreparando: [],
   ordersPronto: [],
   ordersRetirada: [],

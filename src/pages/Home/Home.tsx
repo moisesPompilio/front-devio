@@ -11,7 +11,6 @@ import { getOrderService } from '../../services/orde/getOrderService';
 
 export function Home() {
   const categories = useAppSelector(state => state.categories.categories);
-  const extras = useAppSelector(state => state.extras.extras);
   const dispatch = useDispatch();
   useEffect(() => {
     getCategoryService(dispatch);
@@ -22,7 +21,6 @@ export function Home() {
 
   return (
     <div className="container">
-      <pre>{extras.length}</pre>
       <div className="categories">
         <h2 className="fw-7 ls-4">Categorias</h2>
         <p>Navegue por categoria</p>

@@ -5,9 +5,9 @@ import { useAppSelector } from '../../hooks/useAppSelector';
 
 export function NavBar() {
   const pedidos = useAppSelector(state => state.orders.ordersPedido);
-  const [totalCart, setTotalCart] = useState(pedidos.produtcs.length);
+  const [totalCart, setTotalCart] = useState(pedidos.products.length);
   useEffect(() => {
-    setTotalCart(pedidos.produtcs.length);
+    setTotalCart(pedidos.products.length);
   }, [pedidos]);
   const preparando = useAppSelector(state => state.orders.ordersPreparando);
   const prontos = useAppSelector(state => state.orders.ordersPronto);

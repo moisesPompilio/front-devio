@@ -5,7 +5,7 @@ export const orders: Order[] = [
     id: '2',
     status: 'pedido',
     total: 0,
-    produtcs: [
+    products: [
       {
         id: '1',
         image:
@@ -50,7 +50,7 @@ export const orders: Order[] = [
     id: '2',
     status: 'preparando',
     total: 0,
-    produtcs: [
+    products: [
       {
         id: '1',
         image:
